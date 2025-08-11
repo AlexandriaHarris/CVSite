@@ -7,7 +7,6 @@
   <title>Alexandria L. Harris, MD, MS - Academic Curriculum Vitae</title>
 
   <style>
-    /* Global Variables */
     :root {
       --primary-color: #1a365d;
       --secondary-color: #2c5282;
@@ -21,14 +20,13 @@
       --content-max: 1100px;
     }
 
-    /* Base */
     html, body { height: 100%; }
     body {
       font-family: Calibri, "Segoe UI", Tahoma, Arial, sans-serif;
       line-height: 1.6;
       max-width: var(--content-max);
       margin: 40px auto;
-      padding: 0 20px;
+      padding: 0 20px 60px;
       color: var(--text-color);
       background: #fff;
     }
@@ -51,7 +49,6 @@
       margin: 14px 0;
     }
 
-    /* Section header */
     .section-header {
       font-family: Cambria, Georgia, "Times New Roman", serif;
       font-size: 20px;
@@ -62,31 +59,36 @@
       letter-spacing: 0.3px;
     }
 
+    /* Sticky nav */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 0;
+      z-index: 10;
+    }
+    .site-nav a { color: var(--secondary-color); text-decoration: none; margin-right: 10px; font-size: 14px; }
+    .site-nav a:hover { text-decoration: underline; }
+
     /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: var(--section-spacing);
-      border-bottom: var(--border-width) solid var(--primary-color);
-      padding-bottom: 18px;
-    }
-    .name {
-      font-family: Cambria, Georgia, "Times New Roman", serif;
-      font-size: 28px;
-      color: var(--primary-color);
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-    .contact {
-      font-size: 14px;
-      color: var(--muted-text);
-      line-height: 1.4;
-    }
+    .header { text-align: center; margin-bottom: var(--section-spacing); border-bottom: var(--border-width) solid var(--primary-color); padding-bottom: 18px; }
+    .name { font-family: Cambria, Georgia, "Times New Roman", serif; font-size: 28px; color: var(--primary-color); margin-bottom: 8px; font-weight: 700; }
+    .contact { font-size: 14px; color: var(--muted-text); line-height: 1.4; }
+    .updated { font-size: 12px; color: var(--muted-text); margin-top: 6px; }
+
     .professional-profiles { margin-top: 12px; font-size: 14px; }
     .professional-profiles a { color: var(--secondary-color); text-decoration: none; padding: 0 4px; }
     .professional-profiles a:hover { color: var(--primary-color); text-decoration: underline; }
     .professional-profiles .links a:not(:last-child)::after { content: " |"; padding-left: 8px; color: var(--muted-text); }
 
-    /* Two-column row for title/date lines */
+    /* Hero */
+    .hero.card { display: grid; gap: 8px; }
+    .tagline { font-size: 20px; color: var(--primary-color); margin: 0 0 6px; }
+    .cta .btn { display: inline-block; border: 2px solid var(--secondary-color); padding: 6px 10px; border-radius: 4px; text-decoration: none; color: var(--secondary-color); margin-right: 8px; font-size: 14px; }
+    .cta .btn:hover { background: var(--secondary-color); color: #fff; }
+
+    /* Two-column title line */
     .topline { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
     .title, .theme-title, .project-title, .funding-title, .position, .year-header, .category-title { font-weight: 600; color: var(--secondary-color); }
     .date, .funding-date, .dates { color: var(--muted-text); }
@@ -106,12 +108,10 @@
     ul.clean li { padding-left: 14px; position: relative; margin: 6px 0; }
     ul.clean li::before { content: "-"; position: absolute; left: 0; }
 
-    /* Citations */
     .citation .authors { font-size: 15px; }
     .citation .title { color: var(--secondary-color); font-weight: 600; margin-top: 2px; }
     .citation .venue { font-size: 14px; }
 
-    /* Grid layouts */
     .funding-grid, .experience-grid, .skills-grid { display: grid; gap: 18px; margin: 18px 0; }
     .skills-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
@@ -119,9 +119,14 @@
     .skill-list li { padding-left: 14px; position: relative; margin: 6px 0; }
     .skill-list li::before { content: "-"; position: absolute; left: 0; }
 
+    /* details/summary */
+    details.card summary { cursor: pointer; }
+    details.card[open] summary { margin-bottom: 8px; }
+
     /* Print */
     @media print {
       body { margin: 18px; }
+      .site-nav, .cta { display: none; }
       .professional-profiles a { text-decoration: none; color: var(--text-color); }
       .page-break { page-break-before: always; }
     }
@@ -131,14 +136,41 @@
       .topline { flex-direction: column; align-items: flex-start; gap: 2px; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Physician",
+    "name":"Alexandria L. Harris, MD, MS",
+    "address":{"@type":"PostalAddress","streetAddress":"203 Lothrop Street","addressLocality":"Pittsburgh","addressRegion":"PA","postalCode":"15213","addressCountry":"US"},
+    "email":"mailto:AlexHarrisMD@gmail.com",
+    "telephone":"+1-412-728-0815",
+    "sameAs":[
+      "https://orcid.org/0000-0002-0336-4438",
+      "https://www.linkedin.com/in/alexandrialharris/",
+      "https://pubmed.ncbi.nlm.nih.gov/?term=alexandria+harris&size=200",
+      "https://www.researchgate.net/profile/Alexandria-Harris-6",
+      "https://www.doximity.com/profiles/f8ffc36b-9b13-4fd4-9d30-ba4b23c7b3d5/view"
+    ]
+  }
+  </script>
 </head>
 <body>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="#clinical">Clinical scope</a>
+    <a href="#education">Education</a>
+    <a href="#presentations">Presentations</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <header class="header">
     <div class="name">ALEXANDRIA L. HARRIS, MD, MS</div>
     <div class="contact">
       203 Lothrop Street, Pittsburgh, PA 15213<br />
-      AlexHarrisMD@gmail.com | (412) 728-0815
+      <a href="mailto:AlexHarrisMD@gmail.com">AlexHarrisMD@gmail.com</a> | <a href="tel:+14127280815">(412) 728-0815</a>
     </div>
+    <div class="updated">Last updated: August 11, 2025</div>
     <div class="professional-profiles">
       <div class="links">
         <a href="https://www.doximity.com/profiles/f8ffc36b-9b13-4fd4-9d30-ba4b23c7b3d5/view" target="_blank" rel="noopener noreferrer">Doximity</a>
@@ -150,11 +182,32 @@
     </div>
   </header>
 
-  <section class="executive-summary">
-    <strong>Research Focus:</strong> Head and neck cancer survivorship, functional outcomes following treatment, and approaches to surgical reconstruction. Experience in neck disability assessment, swallowing function optimization, and application of engineering principles to research and clinical practice.
+  <section class="hero card" aria-label="Summary and actions">
+    <h1 class="tagline">Otolaryngologist focused on outcomes, airway, and head and neck care</h1>
+    <p>Actively seeking private practice or privademics roles. Open to general ENT with interest in airway and survivorship; research engagement optional.
+    </p>
+    <p class="cta">
+      <a class="btn" href="tel:+14127280815">Call</a>
+      <a class="btn" href="mailto:AlexHarrisMD@gmail.com">Email</a>
+      <a class="btn" href="#" onclick="window.print()">Download PDF</a>
+    </p>
   </section>
 
-  <div class="section-header">EDUCATION & TRAINING</div>
+  <section class="executive-summary" aria-label="Research focus">
+    <strong>Research focus:</strong> Head and neck cancer survivorship, functional outcomes after treatment, and approaches to surgical reconstruction. Experience in neck disability assessment, swallowing function optimization, and applying engineering principles to clinical practice.
+  </section>
+
+  <div id="clinical" class="section-header">CLINICAL SCOPE AND PROCEDURES</div>
+  <div class="entry">
+    <ul class="clean">
+      <li>General ENT: sinus, laryngology, otology, thyroid and parathyroid</li>
+      <li>Airway: tracheotomy care, speaking valve assessment, cuff pressure protocols</li>
+      <li>Head and neck: survivorship and functional outcomes; reconstruction support</li>
+    </ul>
+    <div class="details">EHR: EPIC, Cerner</div>
+  </div>
+
+  <div id="education" class="section-header">EDUCATION AND TRAINING</div>
   <div class="entry">
     <div class="topline"><span class="title">Resident Physician, Otolaryngology - Head and Neck Surgery</span><span class="date">2022 - Present</span></div>
     <div class="institution">University of Pittsburgh Medical Center</div>
@@ -172,7 +225,7 @@
     <div class="institution">West Virginia University</div>
   </div>
 
-  <div class="section-header">RESEARCH & SCHOLARLY WORK</div>
+  <div class="section-header">RESEARCH AND SCHOLARLY WORK</div>
 
   <section class="research-theme-section card">
     <div class="title">RESEARCH THEMES</div>
@@ -181,8 +234,8 @@
       <div class="theme-title">Head and Neck Cancer Outcomes</div>
       <div class="theme-description">
         <ul class="clean">
-          <li>Post-treatment neck disability and swallowing function</li>
-          <li>Pain management and its impact on treatment efficacy</li>
+          <li>Post treatment neck disability and swallowing function</li>
+          <li>Pain management and treatment efficacy</li>
           <li>Objective assessment tools using imaging and clinical metrics</li>
         </ul>
       </div>
@@ -192,8 +245,8 @@
       <div class="theme-title">Surgical Innovation and Engineering Applications</div>
       <div class="theme-description">
         <ul class="clean">
-          <li>Biomechanical evaluation of surgical techniques</li>
-          <li>Quantitative assessment tools for surgical outcomes</li>
+          <li>Biomechanical evaluation of techniques</li>
+          <li>Quantitative assessment tools for outcomes</li>
           <li>Process optimization in clinical workflows</li>
         </ul>
       </div>
@@ -203,7 +256,7 @@
       <div class="theme-title">Clinical Microbiology and Biofilm Research</div>
       <div class="theme-description">
         <ul class="clean">
-          <li>Virulence expression in tracheostomy-associated Pseudomonas</li>
+          <li>Virulence expression in tracheostomy associated Pseudomonas</li>
           <li>Biofilm formation and treatment in head and neck infections</li>
           <li>Development of therapeutic approaches</li>
         </ul>
@@ -216,12 +269,11 @@
 
     <div class="project">
       <div class="project-title">Pseudomonas Virulence Expression in Tracheostomy Patients</div>
-      <div class="project-details">
-        Principal Investigator: Dr. Rapsinski | Role: Co-Investigator | Status: Active
+      <div class="project-details">Principal Investigator: Dr. Rapsinski | Role: Co Investigator | Status: Active
         <ul class="clean">
           <li>Characterization of virulence factor expression</li>
           <li>Clinical correlation studies</li>
-          <li>Development of targeted strategies</li>
+          <li>Targeted strategies</li>
         </ul>
       </div>
     </div>
@@ -232,137 +284,160 @@
     </div>
 
     <div class="project">
-      <div class="project-title">Endotracheal Tube Cuff Pressure-Volume Dynamics</div>
+      <div class="project-title">Endotracheal Tube Cuff Pressure Volume Dynamics</div>
       <div class="project-details">Principal Investigator | Status: Active | Focus: Quantitative comparison of commercial airway simulators with cadaveric models</div>
     </div>
   </section>
 
-  <section class="publications-section">
-    <div class="section-header">PEER-REVIEWED PUBLICATIONS</div>
+  <section id="publications" class="publications-section">
+    <div class="section-header">PUBLICATIONS</div>
 
-    <div class="year-section">
-      <div class="year-header">2025</div>
+    <details open class="card">
+      <summary><strong>Selected publications</strong> | representative items</summary>
       <div class="citation">
         <div class="authors">Patel TA; Michaelson G; Morton Z; Harris A; Smith B; Bourguillon R; Wu E; Eguia A; Maxwell JH.</div>
-        <div class="title">Use of ChatGPT for patient education involving HPV-associated oropharyngeal cancer.</div>
-        <div class="venue">Am J Otolaryngol. 2025 Jul-Aug;46(4):104642. doi: 10.1016/j.amjoto.2025.104642. Epub 2025 Apr 21. PMID: 40279734.</div>
+        <div class="title">Use of ChatGPT for patient education involving HPV associated oropharyngeal cancer.</div>
+        <div class="venue">Am J Otolaryngol. 2025 Jul Aug;46(4):104642. doi: 10.1016/j.amjoto.2025.104642. Epub 2025 Apr 21. PMID: 40279734.</div>
       </div>
-    </div>
-
-    <div class="year-section">
-      <div class="year-header">2024</div>
       <div class="citation">
         <div class="authors">Thomas TH; Scott PW; Nilsen ML; Lee J; McCarthy ME; Harris A; Johnson J; Donovan HS.</div>
-        <div class="title">The female self-advocacy in Cancer Survivorship scale is a psychometrically sound measure of self-advocacy in male cancer survivors.</div>
+        <div class="title">The female self advocacy in Cancer Survivorship scale is a psychometrically sound measure of self advocacy in male cancer survivors.</div>
         <div class="venue">Psychooncology. 2024 Jan;33(1):e6269. doi: 10.1002/pon.6269. Epub 2023 Dec 14. PMID: 38095337.</div>
       </div>
       <div class="citation">
         <div class="authors">Harris A; Yver C.</div>
         <div class="title">Neurorrhaphy Model Using Chicken Thighs.</div>
-        <div class="venue">FPSAM Video Journal. 2024;2(1):1-2. doi: 10.1089/fpsamv.2024.0034.</div>
+        <div class="venue">FPSAM Video Journal. 2024;2(1):1 2. doi: 10.1089/fpsamv.2024.0034.</div>
       </div>
-    </div>
+    </details>
 
-    <div class="year-section">
-      <div class="year-header">2023</div>
-      <div class="citation">
-        <div class="authors">Scheff NN; Harris AL; Li J; Horan NL; Kubik MW; Kim SW; Nilsen ML.</div>
-        <div class="title">Pretreatment pain predicts perineural invasion in patients with head and neck squamous cell carcinoma.</div>
-        <div class="venue">Support Care Cancer. 2023 Jun 21;31(7):405.</div>
-      </div>
-      <div class="citation">
-        <div class="authors">Harris AL; Kaffenberger TM; Green KJ; Kolich B; Khan N; Solari MG; Sridharan SS; Kubik MW.</div>
-        <div class="title">Functional outcomes of hyoid suspension in anterior oromandibular reconstruction.</div>
-        <div class="venue">Am J Otolaryngol. 2023 Jul-Aug;44(4):103812.</div>
-      </div>
-      <div class="citation">
-        <div class="authors">Scheff NN; Nilsen ML; Li J; Harris AL; Acharya R; Swartz A; Hsieh RW; Anderson JL; Ferris RL; Menk AV; Delgoffe GM; Zandberg DP.</div>
-        <div class="title">The effect of opioids on the efficacy of immunotherapy in recurrent/metastatic squamous cell carcinoma of the head and neck.</div>
-        <div class="venue">Oncol. 2023 May;140:106363.</div>
-      </div>
-    </div>
+    <details class="card">
+      <summary>Full list</summary>
 
-    <div class="year-section">
-      <div class="year-header">2022</div>
-      <div class="citation">
-        <div class="authors">Harris A; Li J; Atchison K; Harrison C; Hall D; VanderWeele T; Johnson JT; Nilsen ML.</div>
-        <div class="title">Flourishing in head and neck cancer survivors.</div>
-        <div class="venue">Cancer Med. 2022 Jul;11(13):2561-2575.</div>
+      <div class="year-section">
+        <div class="year-header">2025</div>
+        <div class="citation">
+          <div class="authors">Patel TA; Michaelson G; Morton Z; Harris A; Smith B; Bourguillon R; Wu E; Eguia A; Maxwell JH.</div>
+          <div class="title">Use of ChatGPT for patient education involving HPV associated oropharyngeal cancer.</div>
+          <div class="venue">Am J Otolaryngol. 2025 Jul Aug;46(4):104642. doi: 10.1016/j.amjoto.2025.104642. Epub 2025 Apr 21. PMID: 40279734.</div>
+        </div>
       </div>
-      <div class="citation">
-        <div class="authors">Block L; Pfaff MJ; Harris A; Goldstein JA; Losee JE.</div>
-        <div class="title">The Crooked Nose: A Practical Guide to Successful Management.</div>
-        <div class="venue">Plast Reconstr Surg. 2022 Apr 1;149(4):779e-788e.</div>
-      </div>
-      <div class="citation">
-        <div class="authors">Harris A; Branstetter B; Li J; Piva SR; Johnson JT; Nilsen ML.</div>
-        <div class="title">Evaluation of Neck Disability Using Computed-Tomography in Head and Neck Cancer Survivors.</div>
-        <div class="venue">Front Pain Res. 2022 May 17;3:910247.</div>
-      </div>
-      <div class="citation">
-        <div class="authors">Muresan C; Muresan CW; Harris AL; Shaterian A; Van Royen K; Kachare SD; Bhandari L; Palazzo MD.</div>
-        <div class="title">Effect of Oblique Tendon Laceration on Core Suture Strength: A Biomechanical Evaluation.</div>
-        <div class="venue">Hand (N Y). 2022 Sep;17(5):853-859.</div>
-      </div>
-    </div>
 
-    <div class="year-section">
-      <div class="year-header">2021</div>
-      <div class="citation">
-        <div class="authors">Magaña LC; Murati S; Riffitts M; Harrison C; Harris A; Sowa G; Johnson JT; Bell K; Nilsen M.</div>
-        <div class="title">Subjective and Objective Measures in Assessing Neck Disability and Pain in Head and Neck Cancer.</div>
-        <div class="venue">Laryngoscope. 2021 Sep;131(9):2015-2022.</div>
+      <div class="year-section">
+        <div class="year-header">2024</div>
+        <div class="citation">
+          <div class="authors">Thomas TH; Scott PW; Nilsen ML; Lee J; McCarthy ME; Harris A; Johnson J; Donovan HS.</div>
+          <div class="title">The female self advocacy in Cancer Survivorship scale is a psychometrically sound measure of self advocacy in male cancer survivors.</div>
+          <div class="venue">Psychooncology. 2024 Jan;33(1):e6269. doi: 10.1002/pon.6269. Epub 2023 Dec 14. PMID: 38095337.</div>
+        </div>
+        <div class="citation">
+          <div class="authors">Harris A; Yver C.</div>
+          <div class="title">Neurorrhaphy Model Using Chicken Thighs.</div>
+          <div class="venue">FPSAM Video Journal. 2024;2(1):1 2. doi: 10.1089/fpsamv.2024.0034.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="year-section">
-      <div class="year-header">2020</div>
-      <div class="citation">
-        <div class="authors">Harris A; Lyu L; Wasserman-Winko T; George S; Johnson JT; Nilsen ML.</div>
-        <div class="title">Neck Disability and Swallowing Function in Posttreatment Head and Neck Cancer Patients.</div>
-        <div class="venue">Otolaryngol Head Neck Surg. 2020 Oct;163(4):763-770.</div>
+      <div class="year-section">
+        <div class="year-header">2023</div>
+        <div class="citation">
+          <div class="authors">Scheff NN; Harris AL; Li J; Horan NL; Kubik MW; Kim SW; Nilsen ML.</div>
+          <div class="title">Pretreatment pain predicts perineural invasion in patients with head and neck squamous cell carcinoma.</div>
+          <div class="venue">Support Care Cancer. 2023 Jun 21;31(7):405.</div>
+        </div>
+        <div class="citation">
+          <div class="authors">Harris AL; Kaffenberger TM; Green KJ; Kolich B; Khan N; Solari MG; Sridharan SS; Kubik MW.</div>
+          <div class="title">Functional outcomes of hyoid suspension in anterior oromandibular reconstruction.</div>
+          <div class="venue">Am J Otolaryngol. 2023 Jul Aug;44(4):103812.</div>
+        </div>
+        <div class="citation">
+          <div class="authors">Scheff NN; Nilsen ML; Li J; Harris AL; Acharya R; Swartz A; Hsieh RW; Anderson JL; Ferris RL; Menk AV; Delgoffe GM; Zandberg DP.</div>
+          <div class="title">The effect of opioids on the efficacy of immunotherapy in recurrent or metastatic squamous cell carcinoma of the head and neck.</div>
+          <div class="venue">Oncol. 2023 May;140:106363.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="year-section">
-      <div class="year-header">2011</div>
-      <div class="citation">
-        <div class="authors">Wang D; Zhang Y; Harris A; et al.</div>
-        <div class="title">Triazole-Gold Promoted Effective Synthesis of Enone from Propargyl-Esters and Alcohols.</div>
-        <div class="venue">Adv. Syn. Cat. 2011.</div>
+      <div class="year-section">
+        <div class="year-header">2022</div>
+        <div class="citation">
+          <div class="authors">Harris A; Li J; Atchison K; Harrison C; Hall D; VanderWeele T; Johnson JT; Nilsen ML.</div>
+          <div class="title">Flourishing in head and neck cancer survivors.</div>
+          <div class="venue">Cancer Med. 2022 Jul;11(13):2561 2575.</div>
+        </div>
+        <div class="citation">
+          <div class="authors">Block L; Pfaff MJ; Harris A; Goldstein JA; Losee JE.</div>
+          <div class="title">The Crooked Nose: A Practical Guide to Successful Management.</div>
+          <div class="venue">Plast Reconstr Surg. 2022 Apr 1;149(4):779e 788e.</div>
+        </div>
+        <div class="citation">
+          <div class="authors">Harris A; Branstetter B; Li J; Piva SR; Johnson JT; Nilsen ML.</div>
+          <div class="title">Evaluation of Neck Disability Using Computed Tomography in Head and Neck Cancer Survivors.</div>
+          <div class="venue">Front Pain Res. 2022 May 17;3:910247.</div>
+        </div>
+        <div class="citation">
+          <div class="authors">Muresan C; Muresan CW; Harris AL; Shaterian A; Van Royen K; Kachare SD; Bhandari L; Palazzo MD.</div>
+          <div class="title">Effect of Oblique Tendon Laceration on Core Suture Strength: A Biomechanical Evaluation.</div>
+          <div class="venue">Hand (N Y). 2022 Sep;17(5):853 859.</div>
+        </div>
       </div>
-      <div class="citation">
-        <div class="authors">Wang D; Gautam L; Bollinger C; Harris A; et al.</div>
-        <div class="title">1,2,3-Triazole Bound Au(I) (TA-Au) as Chemoselective Catalysts in Promoting Asymmetric Synthesis of Substituted Allenes.</div>
-        <div class="venue">Org. Lett. 2011.</div>
+
+      <div class="year-section">
+        <div class="year-header">2021</div>
+        <div class="citation">
+          <div class="authors">Magana LC; Murati S; Riffitts M; Harrison C; Harris A; Sowa G; Johnson JT; Bell K; Nilsen M.</div>
+          <div class="title">Subjective and Objective Measures in Assessing Neck Disability and Pain in Head and Neck Cancer.</div>
+          <div class="venue">Laryngoscope. 2021 Sep;131(9):2015 2022.</div>
+        </div>
       </div>
-    </div>
+
+      <div class="year-section">
+        <div class="year-header">2020</div>
+        <div class="citation">
+          <div class="authors">Harris A; Lyu L; Wasserman Winko T; George S; Johnson JT; Nilsen ML.</div>
+          <div class="title">Neck Disability and Swallowing Function in Posttreatment Head and Neck Cancer Patients.</div>
+          <div class="venue">Otolaryngol Head Neck Surg. 2020 Oct;163(4):763 770.</div>
+        </div>
+      </div>
+
+      <div class="year-section">
+        <div class="year-header">2011</div>
+        <div class="citation">
+          <div class="authors">Wang D; Zhang Y; Harris A; et al.</div>
+          <div class="title">Triazole Gold Promoted Effective Synthesis of Enone from Propargyl Esters and Alcohols.</div>
+          <div class="venue">Adv. Syn. Cat. 2011.</div>
+        </div>
+        <div class="citation">
+          <div class="authors">Wang D; Gautam L; Bollinger C; Harris A; et al.</div>
+          <div class="title">1,2,3 Triazole Bound Au(I) (TA Au) as Chemoselective Catalysts in Promoting Asymmetric Synthesis of Substituted Allenes.</div>
+          <div class="venue">Org. Lett. 2011.</div>
+        </div>
+      </div>
+    </details>
   </section>
 
-  <section class="presentations-section">
-    <div class="section-header">SCIENTIFIC PRESENTATIONS & ABSTRACTS</div>
+  <section id="presentations" class="presentations-section">
+    <div class="section-header">SCIENTIFIC PRESENTATIONS AND ABSTRACTS</div>
 
     <div class="year-section">
       <div class="year-header">2025</div>
 
       <div class="presentation">
         <div class="presentation-title">Comparative Analysis of Endotracheal Tube Cuff Pressure Dynamics: Implications for Safe Inflation Protocols</div>
-        <div class="presentation-details">American Laryngological Association 146th Annual Meeting at COSM, New Orleans, LA, May 17-18, 2025. Hyatt Regency Hotel. Poster D014. Authors: Harris AL; Niksic A; Snyderman C. Status: Accepted.</div>
+        <div class="presentation-details">American Laryngological Association 146th Annual Meeting at COSM, New Orleans, LA, May 17 18, 2025. Hyatt Regency Hotel. Poster D014. Authors: Harris AL; Niksic A; Snyderman C. Status: Accepted.</div>
       </div>
 
       <div class="presentation">
         <div class="presentation-title">Revision Rates and Outcomes of Soft Tissue Free Flaps in Oral Cancer Microvascular Reconstruction</div>
-        <div class="presentation-details">COSM 2025, Section: AHNS, Track: Reconstruction / Microvascular Surgery. Poster B293. Presenter: Joseph DeCicco, BS. Authors: Zayan KL; Harris A; DeCicco J; Sridharan S; Spector M. Status: File under review.</div>
+        <div class="presentation-details">COSM 2025, Section: AHNS, Track: Reconstruction or Microvascular Surgery. Poster B293. Presenter: Joseph DeCicco, BS. Authors: Zayan KL; Harris A; DeCicco J; Sridharan S; Spector M. Status: File under review.</div>
       </div>
 
       <div class="presentation">
         <div class="presentation-title">What is the Role of Laryngeal Morphology in Obstructive Sleep Apnea? A Retrospective Analysis</div>
-        <div class="presentation-details">AAO-HNSF 2025 Annual Meeting, Indianapolis, IN, October 11-14, 2025. Authors: Harris A; Carlson K; Kaffenberger T; Mazul A; Stinnett S. Status: Submitted.</div>
+        <div class="presentation-details">AAO HNSF 2025 Annual Meeting, Indianapolis, IN, October 11 14, 2025. Authors: Harris A; Carlson K; Kaffenberger T; Mazul A; Stinnett S. Status: Submitted.</div>
       </div>
 
       <div class="presentation">
-        <div class="presentation-title">Impact on Endotracheal Tube Cuff Pressure-Volume Relationships and Safe Airway Management</div>
-        <div class="presentation-details">AAO-HNSF 2025 Annual Meeting, Indianapolis, IN, October 11-14, 2025. Authors: Harris AL; Niksic A; Snyderman C. Status: Submitted.</div>
+        <div class="presentation-title">Impact on Endotracheal Tube Cuff Pressure Volume Relationships and Safe Airway Management</div>
+        <div class="presentation-details">AAO HNSF 2025 Annual Meeting, Indianapolis, IN, October 11 14, 2025. Authors: Harris AL; Niksic A; Snyderman C. Status: Submitted.</div>
       </div>
     </div>
 
@@ -370,11 +445,11 @@
       <div class="year-header">2024</div>
       <div class="presentation">
         <div class="presentation-title">Pediatric Tracheotomy Speaking Valve Assessment: A Golden Opportunity for Quality Improvement and Reduction of Health Care Disparities</div>
-        <div class="presentation-details">ASPO Annual Meeting, Chicago, IL, May 17-19, 2024. Poster. Authors: Harris A; Obuekwe F; White KE; Shaffer A; Dohar J.</div>
+        <div class="presentation-details">ASPO Annual Meeting, Chicago, IL, May 17 19, 2024. Poster. Authors: Harris A; Obuekwe F; White KE; Shaffer A; Dohar J.</div>
       </div>
       <div class="presentation">
         <div class="presentation-title">Optimizing Pediatric Tracheotomy Care Through Speaking Valve Assessment: A Step Toward Reducing Health Disparities</div>
-        <div class="presentation-details">PAO-HNS Annual Scientific Meeting, Hershey, PA, June 14-15, 2024. E-Poster. Authors: Harris A; Obuekwe F; White KE; Shaffer A; Dohar J.</div>
+        <div class="presentation-details">PAO HNS Annual Scientific Meeting, Hershey, PA, June 14 15, 2024. E Poster. Authors: Harris A; Obuekwe F; White KE; Shaffer A; Dohar J.</div>
       </div>
     </div>
 
@@ -382,7 +457,7 @@
       <div class="year-header">2023</div>
       <div class="presentation">
         <div class="presentation-title">Hyoid Suspension in Anterior Oromandibular Reconstruction</div>
-        <div class="presentation-details">ASRM Annual Meeting, January 20-24, 2023. E-Poster. Authors: Harris AL; Kaffenberger TM; Green KJ; Kolich B; Solari MG; Sridharan S; Kubik MW.</div>
+        <div class="presentation-details">ASRM Annual Meeting, January 20 24, 2023. E Poster. Authors: Harris AL; Kaffenberger TM; Green KJ; Kolich B; Solari MG; Sridharan S; Kubik MW.</div>
       </div>
     </div>
 
@@ -390,7 +465,7 @@
       <div class="year-header">2021</div>
       <div class="presentation">
         <div class="presentation-title">Impact of Neck Disability on Flourishing in Head and Neck Cancer Survivors</div>
-        <div class="presentation-details">AHNS 10th International Conference on Head & Neck Cancer, Chicago, IL, July 24, 2021. Poster. Authors: Harris A; Li J; Atchison K; Harrison C; Hall D; Johnson J; Nilsen ML.</div>
+        <div class="presentation-details">AHNS 10th International Conference on Head and Neck Cancer, Chicago, IL, July 24, 2021. Poster. Authors: Harris A; Li J; Atchison K; Harrison C; Hall D; Johnson J; Nilsen ML.</div>
       </div>
       <div class="presentation">
         <div class="presentation-title">Evaluating Possible Risk and Protective Factors Related to Hospitalizations of the Head and Neck Cancer Patients</div>
@@ -402,14 +477,14 @@
       </div>
       <div class="presentation">
         <div class="presentation-title">Characterization and Outcomes of Pediatric Vocal Cord Paresis and Paralysis</div>
-        <div class="presentation-details">AAO-HNSF 2021 Annual Meeting & OTO Experience, Los Angeles, CA, October 4, 2021. Poster. Authors: Harris A; McCoy J; Tobey A.</div>
+        <div class="presentation-details">AAO HNSF 2021 Annual Meeting and OTO Experience, Los Angeles, CA, October 4, 2021. Poster. Authors: Harris A; McCoy J; Tobey A.</div>
       </div>
     </div>
 
     <div class="year-section">
       <div class="year-header">2019</div>
       <div class="presentation">
-        <div class="presentation-title">Neck Disability and Swallowing Function Related in Post-Treatment Head and Neck Cancer Patients</div>
+        <div class="presentation-title">Neck Disability and Swallowing Function Related in Post Treatment Head and Neck Cancer Patients</div>
         <div class="presentation-details">American Academy of Otolaryngology Annual Meeting, New Orleans, LA, April 1, 2019. Oral. Authors: Harris A; Lyu L; Winko T; George S; Johnson J; Nilsen M.</div>
       </div>
       <div class="presentation">
@@ -421,22 +496,22 @@
     <div class="year-section">
       <div class="year-header">2018</div>
       <div class="presentation">
-        <div class="presentation-title">Neck Disability Relationship to Swallowing Dysfunction in Post-Treatment Head and Neck Cancer Patients</div>
+        <div class="presentation-title">Neck Disability Relationship to Swallowing Dysfunction in Post Treatment Head and Neck Cancer Patients</div>
         <div class="presentation-details">Deans Research Symposium, Pittsburgh, PA, September 1, 2018. Poster. Authors: Harris A; Mady L; Johnson J; Nilsen M.</div>
       </div>
     </div>
   </section>
 
   <section class="funding-section">
-    <div class="section-header">RESEARCH FUNDING & AWARDS</div>
+    <div class="section-header">RESEARCH FUNDING AND AWARDS</div>
     <div class="funding-grid">
       <div class="funding-item">
         <div class="topline"><span class="funding-title">Deans Summer Research Award</span><span class="funding-date">2018</span></div>
         <div class="funding-details">
           <strong>Amount:</strong> $5,000<br />
-          <strong>Project:</strong> Neck Disability and Swallowing Function in Post-treatment Head and Neck Cancer Patients<br />
+          <strong>Project:</strong> Neck Disability and Swallowing Function in Post treatment Head and Neck Cancer Patients<br />
           <strong>Mentors:</strong> Dr. Jonas Johnson; Dr. Marci Nilsen<br />
-          <strong>Outcomes:</strong> Multiple peer-reviewed publications and presentations
+          <strong>Outcomes:</strong> Multiple publications and presentations
         </div>
       </div>
       <div class="funding-item">
@@ -452,7 +527,7 @@
         <div class="topline"><span class="funding-title">WVNano SURE Award for Nanotechnology Research</span><span class="funding-date">2009 - 2010</span></div>
         <div class="funding-details">
           <strong>Amount:</strong> $5,000<br />
-          <strong>Focus:</strong> Structure-activity relationships in receptor tyrosine kinase inhibitors<br />
+          <strong>Focus:</strong> Structure activity relationships in receptor tyrosine kinase inhibitors<br />
           <strong>Mentor:</strong> Xiaodong Michael Shi, PhD
         </div>
       </div>
@@ -460,7 +535,7 @@
   </section>
 
   <section class="presentations-section">
-    <div class="section-header">HONORS, AWARDS & PROFESSIONAL MEMBERSHIPS</div>
+    <div class="section-header">HONORS, AWARDS AND PROFESSIONAL MEMBERSHIPS</div>
 
     <div class="year-section">
       <div class="year-header">Professional Society Memberships</div>
@@ -470,7 +545,7 @@
           <li>Pennsylvania Medical Society</li>
           <li>Allegheny County Medical Society</li>
           <li>Association of Women Surgeons</li>
-          <li>Women in Otolaryngology (Research Committee Member, 2024 - Present)</li>
+          <li>Women in Otolaryngology (Research Committee Member, 2024 to present)</li>
         </ul>
       </div>
     </div>
@@ -496,18 +571,18 @@
   </section>
 
   <section class="presentations-section">
-    <div class="section-header">ENGINEERING & TECHNICAL EXPERIENCE</div>
+    <div class="section-header">ENGINEERING AND TECHNICAL EXPERIENCE</div>
     <div class="experience-grid">
       <div class="experience-item">
         <div class="topline"><span class="position">Controls and Automation Engineer</span><span class="dates">2012 - 2018</span></div>
-        <div class="company">Hargrove Engineers + Constructors; Cimation; Yokogawa Corporation</div>
+        <div class="company">Hargrove Engineers and Constructors; Cimation; Yokogawa Corporation</div>
         <div class="responsibilities">
           <ul class="clean">
-            <li>Led design and implementation of safety instrumented systems for critical process control</li>
-            <li>Developed standardized PLC programming protocols</li>
-            <li>Managed integration of multiple DCS platforms and control systems</li>
-            <li>Implemented risk assessment and mitigation strategies for control systems</li>
-            <li>Coordinated cross-functional teams for large-scale automation projects</li>
+            <li>Design and implementation of safety instrumented systems for critical process control</li>
+            <li>Standardized PLC programming protocols</li>
+            <li>Integration of multiple DCS platforms and control systems</li>
+            <li>Risk assessment and mitigation strategies for control systems</li>
+            <li>Cross functional team coordination for large automation projects</li>
           </ul>
         </div>
       </div>
@@ -516,17 +591,28 @@
         <div class="company">PPG Industries</div>
         <div class="responsibilities">
           <ul class="clean">
-            <li>Developed prototype coatings using polymerization techniques</li>
-            <li>Implemented ISO and OSHA safety protocols for lab operations</li>
-            <li>Conducted quality control testing and process optimization</li>
+            <li>Prototype coatings development using polymerization techniques</li>
+            <li>ISO and OSHA safety protocol implementation for lab operations</li>
+            <li>Quality control testing and process optimization</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="presentations-section">
+    <div class="section-header">TEACHING AND SERVICE</div>
+    <div class="entry">
+      <ul class="clean">
+        <li>Resident and student teaching in clinic and OR</li>
+        <li>Quality improvement: pediatric tracheotomy speaking valve assessment workflow</li>
+        <li>Women in Otolaryngology Research Committee, 2024 to present</li>
+      </ul>
+    </div>
+  </section>
+
   <section>
-    <div class="section-header">TECHNICAL SKILLS & COMPETENCIES</div>
+    <div class="section-header">TECHNICAL SKILLS AND COMPETENCIES</div>
     <div class="skills-grid">
       <div class="skill-category">
         <div class="category-title">Engineering Software</div>
@@ -534,7 +620,7 @@
           <li>PLC programming (RSLogix, Studio 5000)</li>
           <li>HMI development (Wonderware, FactoryTalk)</li>
           <li>SCADA systems (ClearSCADA)</li>
-          <li>MATLAB/Simulink</li>
+          <li>MATLAB and Simulink</li>
           <li>Statistical analysis software</li>
           <li>Process control systems</li>
         </ul>
@@ -545,13 +631,13 @@
           <li>DCS implementation</li>
           <li>Safety instrumented systems</li>
           <li>Process automation</li>
-          <li>Yokogawa ProSafe-RS</li>
-          <li>Allen-Bradley controls</li>
+          <li>Yokogawa ProSafe RS</li>
+          <li>Allen Bradley controls</li>
           <li>GE Proficy platform</li>
         </ul>
       </div>
       <div class="skill-category">
-        <div class="category-title">Research & Clinical</div>
+        <div class="category-title">Research and Clinical</div>
         <ul class="skill-list">
           <li>Clinical research methods</li>
           <li>Statistical analysis</li>
@@ -563,5 +649,12 @@
       </div>
     </div>
   </section>
+
+  <footer id="contact" class="header" style="margin-top:40px;">
+    <div class="name">Contact</div>
+    <div class="contact">
+      <a href="mailto:AlexHarrisMD@gmail.com">AlexHarrisMD@gmail.com</a> | <a href="tel:+14127280815">(412) 728-0815</a>
+    </div>
+  </footer>
 </body>
 </html>
