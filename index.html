@@ -113,7 +113,7 @@
     .citation .venue { font-size: 14px; }
 
     .funding-grid, .experience-grid, .skills-grid { display: grid; gap: 18px; margin: 18px 0; }
-    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     .skill-list { list-style: none; padding: 0; margin: 0; }
     .skill-list li { padding-left: 14px; position: relative; margin: 6px 0; }
@@ -149,6 +149,17 @@
       .citation .venue { font-size: 12px; }
 
       .skills-grid, .experience-grid, .funding-grid { gap: 10px; }
+
+      /* Force 3 columns for Skills in PDF */
+      .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; display: grid !important; }
+      .skill-category { break-inside: avoid; page-break-inside: avoid; }
+
+      /* Force 2 columns for Experience and Funding in PDF */
+      .experience-grid, .funding-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; display: grid !important; }
+      .experience-item, .funding-item { break-inside: avoid; page-break-inside: avoid; }
+
+      body.compact .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+      body.compact .experience-grid, body.compact .funding-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
 
       .page-break { page-break-before: always; }
 
@@ -188,6 +199,9 @@
       .name { font-size: 20px !important; }
       .year-header { font-weight: 700 !important; }
     }
+  /* Skills grid responsive */
+    @media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .skills-grid { grid-template-columns: 1fr; } }
   </style>
 
   <script type="application/ld+json">
