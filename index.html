@@ -166,6 +166,28 @@
     @media (max-width: 768px) {
       .topline { flex-direction: column; align-items: flex-start; gap: 2px; }
     }
+  /* Print overrides: black and white, section rules, tighter spacing */
+    @media print {
+      * { color: #000 !important; background: transparent !important; box-shadow: none !important; text-shadow: none !important; }
+      a { text-decoration: none !important; }
+      body { margin: 8mm !important; font-size: 12px !important; line-height: 1.3 !important; }
+      .site-nav, .cta, .updated { display: none !important; }
+
+      /* Section separators */
+      .header { border: 0 !important; padding-bottom: 6px !important; }
+      .section-header { border-bottom: 1px solid #000 !important; margin: 10px 0 6px 0 !important; padding-bottom: 4px !important; font-size: 15px !important; }
+
+      /* Group separators inside long sections */
+      .year-section { border: 0 !important; padding-top: 4px !important; margin-top: 6px !important; break-inside: avoid; }
+
+      /* Tighten within groups */
+      .entry, .presentation, .citation, .project, .theme, .funding-item, .experience-item, .skill-category { border: 0 !important; padding: 2px 0 !important; margin: 2px 0 !important; }
+      ul.clean, .skill-list { margin: 0 !important; }
+      ul.clean li, .skill-list li { margin: 1px 0 !important; }
+
+      .name { font-size: 20px !important; }
+      .year-header { font-weight: 700 !important; }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -230,7 +252,7 @@
       <a class="btn" href="tel:+14127280815">Call</a>
       <a class="btn" href="mailto:AlexHarrisMD@gmail.com">Email</a>
       <a class="btn" href="#" onclick="window.print()">Download PDF</a>
-      <a class="btn" href="#" onclick="printCompact()">Compact PDF</a>
+      <a class="btn" href="#" onclick="printCompact()">Compact B/W PDF</a>
     </p>
   </section>
 
