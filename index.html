@@ -198,11 +198,7 @@
       /* Tighten within groups */
       .entry, .presentation, .citation, .project, .theme, .funding-item, .experience-item, .skill-category { border: 0 !important; padding: 2px 0 !important; margin: 2px 0 !important; }
       ul.clean, .skill-list { margin: 0 !important; }
-      ul.clean li, .skill-list li { margin: 1px 0 !important; }
-
-      $1 18px$2
-      $1
-      .citation .title, .citation .authors, .citation .venue, .details, .presentation-details, .institution, .company { font-size: 12px !important; }
+      ul.clean li, .skill-list li { margin: 1px 0 !important; }.citation .title, .citation .authors, .citation .venue, .details, .presentation-details, .institution, .company { font-size: 12px !important; }
     }
   /* Skills grid responsive */
     @media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -249,13 +245,10 @@
 
   <header class="header">
     <div class="name">ALEXANDRIA L. HARRIS, MD, MS</div>
-    $1
-    <div class="header-cta">
-      <a class="btn" href="tel:+14127280815">Call</a>
-      <a class="btn" href="mailto:AlexHarrisMD@gmail.com">Email</a>
-      <a class="btn" href="#" onclick="printCompact()">PDF</a>
+    <div class="contact">
+      203 Lothrop Street, Pittsburgh, PA 15213<br />
+      <a href="mailto:AlexHarrisMD@gmail.com">AlexHarrisMD@gmail.com</a> | <a href="tel:+14127280815">(412) 728-0815</a>
     </div>
-    <div class="updated">Last updated: August 11, 2025</div>
     <div class="professional-profiles">
       <div class="links">
         <a href="https://www.doximity.com/profiles/f8ffc36b-9b13-4fd4-9d30-ba4b23c7b3d5/view" target="_blank" rel="noopener noreferrer">Doximity</a>
@@ -265,6 +258,12 @@
         <a href="https://orcid.org/0000-0002-0336-4438" target="_blank" rel="noopener noreferrer">ORCID</a>
       </div>
     </div>
+    <div class="header-cta">
+      <a class="btn" href="tel:+14127280815">Call</a>
+      <a class="btn" href="mailto:AlexHarrisMD@gmail.com">Email</a>
+      <a class="btn" href="#" onclick="printCompact()">PDF</a>
+    </div>
+    <div class="updated">Last updated: August 11, 2025</div>
   </header>
 
   <section class="hero card" aria-label="Summary and actions">
@@ -694,7 +693,6 @@
       </ul>
     </div>
   </section>
-
 
   <section>
     <div class="section-header">TECHNICAL SKILLS AND COMPETENCIES</div>
