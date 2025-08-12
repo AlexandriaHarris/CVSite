@@ -123,12 +123,43 @@
     details.card summary { cursor: pointer; }
     details.card[open] summary { margin-bottom: 8px; }
 
-    /* Print */
+    /* Print setup */
+    @page { size: Letter; margin: 10mm; }
+
     @media print {
-      body { margin: 18px; }
+      body { margin: 8mm; font-size: 12px; line-height: 1.35; }
       .site-nav, .cta { display: none; }
+      .header { border: 0; padding-bottom: 8px; }
+      .section-header { border: 0; margin-top: 14px; font-size: 16px; }
       .professional-profiles a { text-decoration: none; color: var(--text-color); }
+
+      /* Flatten cards and tighten spacing for print */
+      .card,
+      .executive-summary,
+      .theme,
+      .project,
+      .funding-item,
+      .experience-item,
+      .entry,
+      .presentation,
+      .skill-category,
+      .citation { background: none; border: 0; padding: 6px 0; margin: 6px 0; }
+
+      .citation .title { font-weight: 700; }
+      .citation .venue { font-size: 12px; }
+
+      .skills-grid, .experience-grid, .funding-grid { gap: 10px; }
+
       .page-break { page-break-before: always; }
+
+      /* Extra compact mode */
+      body.compact { font-size: 11px; line-height: 1.25; }
+      body.compact .name { font-size: 20px; }
+      body.compact .contact { font-size: 12px; }
+      body.compact .updated, body.compact .professional-profiles { display: none; }
+      body.compact .section-header { font-size: 14px; margin-top: 10px; }
+      body.compact .citation { margin: 4px 0; }
+      body.compact ul.clean li { margin: 2px 0; }
     }
 
     /* Responsive */
@@ -154,6 +185,16 @@
     ]
   }
   </script>
+<script>
+  function printCompact() {
+    try {
+      document.body.classList.add('compact');
+      window.print();
+    } finally {
+      setTimeout(function(){ document.body.classList.remove('compact'); }, 0);
+    }
+  }
+</script>
 </head>
 <body>
   <nav class="site-nav" aria-label="Primary">
@@ -189,6 +230,7 @@
       <a class="btn" href="tel:+14127280815">Call</a>
       <a class="btn" href="mailto:AlexHarrisMD@gmail.com">Email</a>
       <a class="btn" href="#" onclick="window.print()">Download PDF</a>
+      <a class="btn" href="#" onclick="printCompact()">Compact PDF</a>
     </p>
   </section>
 
@@ -293,20 +335,23 @@
 
     <div class="card">
       <div class="title">Selected publications</div>
+
       <div class="citation">
+        <div class="title"><a href="https://doi.org/10.1016/j.amjoto.2025.104642" target="_blank" rel="noopener noreferrer">Use of ChatGPT for patient education involving HPV associated oropharyngeal cancer.</a></div>
         <div class="authors">Patel TA; Michaelson G; Morton Z; Harris A; Smith B; Bourguillon R; Wu E; Eguia A; Maxwell JH.</div>
-        <div class="title">Use of ChatGPT for patient education involving HPV associated oropharyngeal cancer.</div>
-        <div class="venue">Am J Otolaryngol. 2025 Jul Aug;46(4):104642. doi: 10.1016/j.amjoto.2025.104642. Epub 2025 Apr 21. PMID: 40279734.</div>
+        <div class="venue">Am J Otolaryngol. 2025 Jul Aug;46(4):104642. Epub 2025 Apr 21. doi: 10.1016/j.amjoto.2025.104642. PMID: 40279734.</div>
       </div>
+
       <div class="citation">
+        <div class="title"><a href="https://doi.org/10.1002/pon.6269" target="_blank" rel="noopener noreferrer">The female self advocacy in Cancer Survivorship scale is a psychometrically sound measure of self advocacy in male cancer survivors.</a></div>
         <div class="authors">Thomas TH; Scott PW; Nilsen ML; Lee J; McCarthy ME; Harris A; Johnson J; Donovan HS.</div>
-        <div class="title">The female self advocacy in Cancer Survivorship scale is a psychometrically sound measure of self advocacy in male cancer survivors.</div>
-        <div class="venue">Psychooncology. 2024 Jan;33(1):e6269. doi: 10.1002/pon.6269. Epub 2023 Dec 14. PMID: 38095337.</div>
+        <div class="venue">Psychooncology. 2024 Jan;33(1):e6269. Epub 2023 Dec 14. doi: 10.1002/pon.6269. PMID: 38095337.</div>
       </div>
+
       <div class="citation">
+        <div class="title"><a href="https://doi.org/10.1089/fpsamv.2024.0034" target="_blank" rel="noopener noreferrer">Neurorrhaphy Model Using Chicken Thighs.</a></div>
         <div class="authors">Harris A; Yver C.</div>
-        <div class="title">Neurorrhaphy Model Using Chicken Thighs.</div>
-        <div class="venue">FPSAM Video Journal. 2024;2(1):1 2. doi: 10.1089/fpsamv.2024.0034.</div>
+        <div class="venue">FPSAM Video Journal. 2024;2(1):1-2. doi: 10.1089/fpsamv.2024.0034.</div>
       </div>
     </div>
 
@@ -315,98 +360,98 @@
     <div class="year-section">
       <div class="year-header">2025</div>
       <div class="citation">
+        <div class="title"><a href="https://doi.org/10.1016/j.amjoto.2025.104642" target="_blank" rel="noopener noreferrer">Use of ChatGPT for patient education involving HPV associated oropharyngeal cancer.</a></div>
         <div class="authors">Patel TA; Michaelson G; Morton Z; Harris A; Smith B; Bourguillon R; Wu E; Eguia A; Maxwell JH.</div>
-        <div class="title">Use of ChatGPT for patient education involving HPV associated oropharyngeal cancer.</div>
-        <div class="venue">Am J Otolaryngol. 2025 Jul Aug;46(4):104642. doi: 10.1016/j.amjoto.2025.104642. Epub 2025 Apr 21. PMID: 40279734.</div>
+        <div class="venue">Am J Otolaryngol. 2025 Jul Aug;46(4):104642. Epub 2025 Apr 21. doi: 10.1016/j.amjoto.2025.104642. PMID: 40279734.</div>
       </div>
     </div>
 
     <div class="year-section">
       <div class="year-header">2024</div>
       <div class="citation">
+        <div class="title"><a href="https://doi.org/10.1002/pon.6269" target="_blank" rel="noopener noreferrer">The female self advocacy in Cancer Survivorship scale is a psychometrically sound measure of self advocacy in male cancer survivors.</a></div>
         <div class="authors">Thomas TH; Scott PW; Nilsen ML; Lee J; McCarthy ME; Harris A; Johnson J; Donovan HS.</div>
-        <div class="title">The female self advocacy in Cancer Survivorship scale is a psychometrically sound measure of self advocacy in male cancer survivors.</div>
-        <div class="venue">Psychooncology. 2024 Jan;33(1):e6269. doi: 10.1002/pon.6269. Epub 2023 Dec 14. PMID: 38095337.</div>
+        <div class="venue">Psychooncology. 2024 Jan;33(1):e6269. Epub 2023 Dec 14. doi: 10.1002/pon.6269. PMID: 38095337.</div>
       </div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Neurorrhaphy%20Model%20Using%20Chicken%20Thighs%20Harris%20Yver" target="_blank" rel="noopener noreferrer">Neurorrhaphy Model Using Chicken Thighs.</a></div>
         <div class="authors">Harris A; Yver C.</div>
-        <div class="title">Neurorrhaphy Model Using Chicken Thighs.</div>
-        <div class="venue">FPSAM Video Journal. 2024;2(1):1 2. doi: 10.1089/fpsamv.2024.0034.</div>
+        <div class="venue">FPSAM Video Journal. 2024;2(1):1-2.</div>
       </div>
     </div>
 
     <div class="year-section">
       <div class="year-header">2023</div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Pretreatment%20pain%20predicts%20perineural%20invasion%20in%20patients%20with%20head%20and%20neck%20squamous%20cell%20carcinoma%20Harris%20AL" target="_blank" rel="noopener noreferrer">Pretreatment pain predicts perineural invasion in patients with head and neck squamous cell carcinoma.</a></div>
         <div class="authors">Scheff NN; Harris AL; Li J; Horan NL; Kubik MW; Kim SW; Nilsen ML.</div>
-        <div class="title">Pretreatment pain predicts perineural invasion in patients with head and neck squamous cell carcinoma.</div>
         <div class="venue">Support Care Cancer. 2023 Jun 21;31(7):405.</div>
       </div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Functional%20outcomes%20of%20hyoid%20suspension%20in%20anterior%20oromandibular%20reconstruction%20Harris" target="_blank" rel="noopener noreferrer">Functional outcomes of hyoid suspension in anterior oromandibular reconstruction.</a></div>
         <div class="authors">Harris AL; Kaffenberger TM; Green KJ; Kolich B; Khan N; Solari MG; Sridharan SS; Kubik MW.</div>
-        <div class="title">Functional outcomes of hyoid suspension in anterior oromandibular reconstruction.</div>
         <div class="venue">Am J Otolaryngol. 2023 Jul Aug;44(4):103812.</div>
       </div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=The%20effect%20of%20opioids%20on%20the%20efficacy%20of%20immunotherapy%20in%20recurrent%20or%20metastatic%20squamous%20cell%20carcinoma%20of%20the%20head%20and%20neck%20Harris%20Zandberg%20Delgoffe" target="_blank" rel="noopener noreferrer">The effect of opioids on the efficacy of immunotherapy in recurrent or metastatic squamous cell carcinoma of the head and neck.</a></div>
         <div class="authors">Scheff NN; Nilsen ML; Li J; Harris AL; Acharya R; Swartz A; Hsieh RW; Anderson JL; Ferris RL; Menk AV; Delgoffe GM; Zandberg DP.</div>
-        <div class="title">The effect of opioids on the efficacy of immunotherapy in recurrent or metastatic squamous cell carcinoma of the head and neck.</div>
-        <div class="venue">Oncol. 2023 May;140:106363.</div>
+        <div class="venue">Oral Oncol. 2023 May;140:106363.</div>
       </div>
     </div>
 
     <div class="year-section">
       <div class="year-header">2022</div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Flourishing%20in%20head%20and%20neck%20cancer%20survivors%20Harris%20Nilsen" target="_blank" rel="noopener noreferrer">Flourishing in head and neck cancer survivors.</a></div>
         <div class="authors">Harris A; Li J; Atchison K; Harrison C; Hall D; VanderWeele T; Johnson JT; Nilsen ML.</div>
-        <div class="title">Flourishing in head and neck cancer survivors.</div>
-        <div class="venue">Cancer Med. 2022 Jul;11(13):2561 2575.</div>
+        <div class="venue">Cancer Med. 2022 Jul;11(13):2561-2575.</div>
       </div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=The%20Crooked%20Nose%20A%20Practical%20Guide%20to%20Successful%20Management%20Block%20Pfaff%20Harris%20Plast%20Reconstr%20Surg" target="_blank" rel="noopener noreferrer">The Crooked Nose: A Practical Guide to Successful Management.</a></div>
         <div class="authors">Block L; Pfaff MJ; Harris A; Goldstein JA; Losee JE.</div>
-        <div class="title">The Crooked Nose: A Practical Guide to Successful Management.</div>
-        <div class="venue">Plast Reconstr Surg. 2022 Apr 1;149(4):779e 788e.</div>
+        <div class="venue">Plast Reconstr Surg. 2022 Apr 1;149(4):779e-788e.</div>
       </div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Evaluation%20of%20Neck%20Disability%20Using%20Computed%20Tomography%20in%20Head%20and%20Neck%20Cancer%20Survivors%20Harris%20Nilsen" target="_blank" rel="noopener noreferrer">Evaluation of Neck Disability Using Computed Tomography in Head and Neck Cancer Survivors.</a></div>
         <div class="authors">Harris A; Branstetter B; Li J; Piva SR; Johnson JT; Nilsen ML.</div>
-        <div class="title">Evaluation of Neck Disability Using Computed Tomography in Head and Neck Cancer Survivors.</div>
         <div class="venue">Front Pain Res. 2022 May 17;3:910247.</div>
       </div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Effect%20of%20Oblique%20Tendon%20Laceration%20on%20Core%20Suture%20Strength%20A%20Biomechanical%20Evaluation%20Hand%20New%20York%202022%20Harris" target="_blank" rel="noopener noreferrer">Effect of Oblique Tendon Laceration on Core Suture Strength: A Biomechanical Evaluation.</a></div>
         <div class="authors">Muresan C; Muresan CW; Harris AL; Shaterian A; Van Royen K; Kachare SD; Bhandari L; Palazzo MD.</div>
-        <div class="title">Effect of Oblique Tendon Laceration on Core Suture Strength: A Biomechanical Evaluation.</div>
-        <div class="venue">Hand (N Y). 2022 Sep;17(5):853 859.</div>
+        <div class="venue">Hand (N Y). 2022 Sep;17(5):853-859.</div>
       </div>
     </div>
 
     <div class="year-section">
       <div class="year-header">2021</div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Subjective%20and%20Objective%20Measures%20in%20Assessing%20Neck%20Disability%20and%20Pain%20in%20Head%20and%20Neck%20Cancer%20Laryngoscope%202021%20Harris" target="_blank" rel="noopener noreferrer">Subjective and Objective Measures in Assessing Neck Disability and Pain in Head and Neck Cancer.</a></div>
         <div class="authors">Magana LC; Murati S; Riffitts M; Harrison C; Harris A; Sowa G; Johnson JT; Bell K; Nilsen M.</div>
-        <div class="title">Subjective and Objective Measures in Assessing Neck Disability and Pain in Head and Neck Cancer.</div>
-        <div class="venue">Laryngoscope. 2021 Sep;131(9):2015 2022.</div>
+        <div class="venue">Laryngoscope. 2021 Sep;131(9):2015-2022.</div>
       </div>
     </div>
 
     <div class="year-section">
       <div class="year-header">2020</div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Neck%20Disability%20and%20Swallowing%20Function%20in%20Posttreatment%20Head%20and%20Neck%20Cancer%20Patients%202020%20Otolaryngol%20Head%20Neck%20Surg%20Harris" target="_blank" rel="noopener noreferrer">Neck Disability and Swallowing Function in Posttreatment Head and Neck Cancer Patients.</a></div>
         <div class="authors">Harris A; Lyu L; Wasserman Winko T; George S; Johnson JT; Nilsen ML.</div>
-        <div class="title">Neck Disability and Swallowing Function in Posttreatment Head and Neck Cancer Patients.</div>
-        <div class="venue">Otolaryngol Head Neck Surg. 2020 Oct;163(4):763 770.</div>
+        <div class="venue">Otolaryngol Head Neck Surg. 2020 Oct;163(4):763-770.</div>
       </div>
     </div>
 
     <div class="year-section">
       <div class="year-header">2011</div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Triazole%20Gold%20Promoted%20Effective%20Synthesis%20of%20Enone%20from%20Propargyl%20Esters%20and%20Alcohols%202011%20Adv%20Synth%20Catal" target="_blank" rel="noopener noreferrer">Triazole Gold Promoted Effective Synthesis of Enone from Propargyl Esters and Alcohols.</a></div>
         <div class="authors">Wang D; Zhang Y; Harris A; et al.</div>
-        <div class="title">Triazole Gold Promoted Effective Synthesis of Enone from Propargyl Esters and Alcohols.</div>
-        <div class="venue">Adv. Syn. Cat. 2011.</div>
+        <div class="venue">Adv Synth Catal. 2011.</div>
       </div>
       <div class="citation">
+        <div class="title"><a href="https://pubmed.ncbi.nlm.nih.gov/?term=1%2C2%2C3%20Triazole%20Bound%20Au%20I%20TA%20Au%20as%20Chemoselective%20Catalysts%20in%20Promoting%20Asymmetric%20Synthesis%20of%20Substituted%20Allenes%202011%20Org%20Lett" target="_blank" rel="noopener noreferrer">1,2,3 Triazole Bound Au(I) (TA Au) as Chemoselective Catalysts in Promoting Asymmetric Synthesis of Substituted Allenes.</a></div>
         <div class="authors">Wang D; Gautam L; Bollinger C; Harris A; et al.</div>
-        <div class="title">1,2,3 Triazole Bound Au(I) (TA Au) as Chemoselective Catalysts in Promoting Asymmetric Synthesis of Substituted Allenes.</div>
-        <div class="venue">Org. Lett. 2011.</div>
+        <div class="venue">Org Lett. 2011.</div>
       </div>
     </div>
   </section>
